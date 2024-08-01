@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Shipment;
 
+use Pyz\Zed\Shipment\Communication\Plugin\Availability\FreeAvailability;
 use Spryker\Zed\GiftCard\Communication\Plugin\Shipment\GiftCardShipmentGroupMethodFilterPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Shipment\ShipmentDependencyProvider as SprykerShipmentDependencyProvider;
@@ -20,7 +21,9 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
      */
     protected function getAvailabilityPlugins(Container $container): array
     {
-        return [];
+        return array_merge([
+            'FreeDelivery' => new FreeAvailability(),
+        ], parent::getAvailabilityPlugins($container));
     }
 
     /**
