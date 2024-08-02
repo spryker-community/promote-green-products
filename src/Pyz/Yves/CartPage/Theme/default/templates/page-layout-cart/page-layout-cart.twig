@@ -96,6 +96,13 @@
                                 {% endblock %}
                             {% endwidget %}
                         {% endif %}
+                    {% widget 'CartCreditCodeFormWidget' args [data.cart] with {
+                        data: {
+                            ajaxTriggerAttribute: ajaxTriggerAttribute,
+                            redirectRoute: data.isCartActionsAsyncModeEnabled ? 'cart/async/view' : null,
+                        },
+                    } only %}
+                    {% endwidget %}
                     </div>
                     {% include molecule('cart-summary', 'CartPage') with {
                         data: {

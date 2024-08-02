@@ -1,0 +1,27 @@
+{% extends template('widget') %}
+
+{% define data = {
+    form: _widget.cartCreditCodeForm,
+    ajaxTriggerAttribute: null,
+    redirectRoute: null,
+} %}
+
+{% block body %}
+    {% set formActionRoute = data.ajaxTriggerAttribute ? 'cart-code/credit-code/add' : 'cart-code/credit-code/add' %}
+
+    {% include molecule('form') with {
+        modifiers: ['discount-voucher'],
+        data: {
+            form: data.form,
+            submit: {
+                enable: true,
+                text: 'Reedem Point',
+                class: 'button button--hollow-icon',
+                attributes: data.ajaxTriggerAttribute,
+            },
+            options: {
+                action: data.redirectRoute ? path(formActionRoute, {'redirectRouteName': data.redirectRoute}) : path(formActionRoute)
+            },
+        },
+    } only %}
+{% endblock %}
