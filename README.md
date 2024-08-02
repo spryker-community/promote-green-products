@@ -3,3 +3,37 @@ Created by team ***Hacktastic Cartel***.
 
 ## Short Project Description
 The "Green Choices" project aims to reduce carbon footprints by promoting eco-friendly products and educating consumers on sustainable living.
+
+## Installation
+
+1. Create a project folder and clone the B2C Demo Shop and the Docker SDK:
+```bash
+mkdir spryker-b2c && cd spryker-b2c
+git clone https://github.com/spryker-shop/b2c-demo-shop.git ./
+git clone git@github.com:spryker/docker-sdk.git docker
+```
+
+2. Set up a desired environment:
+  * [Set up a development environment](#set-up-a-development-environment)
+  * [Set up a production-like environment](#set-up-a-production-like-environment)
+
+#### Set up a development environment
+
+    1. Bootstrap the docker setup:
+
+    ```bash
+    docker/sdk boot deploy.dev.yml
+    ```
+
+    2. If the command you've run in the previous step returned instructions, follow them.
+
+    3. Build and start the instance:
+    ```bash
+    docker/sdk up
+
+#### Create Attribute in backoffice co2 with text type.
+    1. setup this attribute value for the product from backoffice.
+    2. create Product Labels from back-office and assign the product.
+    3. Setting a free shipping method from backoffice and add plugin which we created for shipping.
+    
+     
