@@ -32,8 +32,12 @@ git clone git@github.com:spryker/docker-sdk.git docker
     docker/sdk up
 
 #### Create Attribute in backoffice co2 with text type.
-    1. setup this attribute value for the product from backoffice.
-    2. create Product Labels from back-office and assign the product.
-    3. Setting a free shipping method from backoffice and add plugin which we created for shipping.
-    
-     
+    1. Configure this attribute value for the product via the back office.
+    2. Create Product Labels in the back office and assign them to the product.
+    3. Set up a free shipping method in the back office and add the shipping plugin we created.
+    4. After an order is successfully placed and the order state is marked as closed, carbon credit will be automatically added to the customer's account in the profile section.
+
+### For Certificate Generator:
+    we need below setup:
+    #### setup dom pdf
+        composer require dompdf/dompdf
