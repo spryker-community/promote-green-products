@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Oms;
 
+use Pyz\Zed\Customer\Communication\Plugin\Oms\Command\GreenEnergyCreditCommandPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
 use Spryker\Zed\Availability\Communication\Plugin\Oms\AvailabilityReservationPostSaveTerminationAwareStrategyPlugin;
 use Spryker\Zed\GiftCard\Communication\Plugin\Oms\Command\CreateGiftCardCommandPlugin;
@@ -107,6 +108,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new SendRefundPaymentMessageCommandPlugin(), 'Payment/Refund');
             $commandCollection->add(new SendCancelPaymentMessageCommandPlugin(), 'Payment/Cancel');
             $commandCollection->add(new RefundCommandPlugin(), 'Payment/Refund/Confirm');
+            $commandCollection->add(new GreenEnergyCreditCommandPlugin(), 'Oms/AddCustomerGreenEnergyCredit');
 
             return $commandCollection;
         });

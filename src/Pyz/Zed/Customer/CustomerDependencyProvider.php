@@ -28,6 +28,11 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      */
     public const NEWSLETTER_FACADE = 'newsletter facade';
 
+     /**
+     * @var string
+     */
+    public const FACADE_PRODUCT = 'product facade';
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -44,6 +49,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
         $container->set(static::NEWSLETTER_FACADE, function (Container $container) {
             return $container->getLocator()->newsletter()->facade();
         });
+        $container = $this->addFacadeProduct($container);
 
         return $container;
     }
@@ -71,5 +77,19 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new CustomerTransferUsernameExpanderPlugin(),
             new AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin(),
         ];
+    }
+
+     /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addFacadeProduct(Container $container): Container
+    {
+        $container->set(static::FACADE_PRODUCT, function (Container $container) {
+            return $container->getLocator()->product()->facade();
+        });
+
+        return $container;
     }
 }

@@ -120,21 +120,12 @@ class CertificateGeneratorReader implements CertificateGeneratorReaderInterface
         // Render the HTML as PDF
         $dompdf->render();
 
-        // $dompdf->stream('certificate.pdf', array('Attachment' => 1));
+        $dompdf->stream('certificate.pdf', array('Attachment' => 1));
 
-        // // // Save the generated PDF to a file
-        $output = $dompdf->output();
-        $filePath = '/data/public/Glue/certi.pdf';
-        file_put_contents($filePath, $output);
-
-        // // Stream the PDF to the browser for download
-
-        // $response['url'] = 'http://glue.at.spryker.local/exam.pdf';
-
-         $customPaymentTransfer = new EventEntityTransfer();
-         $customPaymentTransfer['response'] = true;
-         $restResource = $this->getTransferData($customPaymentTransfer);
-
+        // Stream the PDF to the browser for download
+        $response['response'] = true;
+       
+         $restResource = $this->getTransferData($response);
         return $restResponse->addResource($restResource);
     }
 
@@ -168,122 +159,121 @@ class CertificateGeneratorReader implements CertificateGeneratorReaderInterface
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Certificate of Carbon Emission Reduction</title>
-            <style>
-                body {
-                    font-family: "Times New Roman", Times, serif;
-                    background-color: #f4f4f9;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100vh;
-                    margin: 0;
-                }
+                <style>
+            body {
+                font-family: "Roboto", sans-serif;
+                background-color: #f0f9f0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
 
-                .certificate {
-                    background-color: #ffffff;
-                    width: 750px;
-                    border-radius: 10px;
-                    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-                    padding: 40px;
-                    text-align: center;
-                    border: 2px solid #2c3e50;
-                    position: relative;
-                    overflow: hidden;
-                }
+            .certificate {
+                background-color: #ffffff;
+                width: 100%;
+                border-radius: 15px;
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+                padding: 40px;
+                text-align: center;
+                border: 4px dashed #4caf50;
+                position: relative;
+                overflow: hidden;
+                box-sizing: border-box;
 
-                .certificate img {
-                    max-width: 150px;
-                    height: auto;
-                    margin-bottom: 20px;
-                }
+            }
 
-                .certificate h1 {
-                    font-size: 30px;
-                    margin-bottom: 25px;
-                    color: #2c3e50;
-                    font-weight: bold;
-                }
+            .certificate img {
+                max-width: 150px;
+                height: auto;
+                margin-bottom: 20px;
+            }
 
-                .certificate p {
-                    font-size: 16px;
-                    line-height: 1.6;
-                    color: #333;
-                    margin: 10px 0;
-                }
+            .certificate h1 {
+                font-family: "Pacifico", cursive;
+                font-size: 36px;
+                margin-bottom: 25px;
+                color: #4caf50;
+            }
 
-                .certificate .details {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 10px;
-                }
+            .certificate p {
+                font-size: 18px;
+                line-height: 1.6;
+                color: #333;
+                margin: 10px 0;
+            }
 
-                .certificate .summary {
-                    text-align: left;
-                    margin-top: 30px;
-                    padding: 15px;
-                    background-color: #e8f5e9;
-                    border-radius: 8px;
-                    border-left: 5px solid #2c3e50;
-                }
+            .certificate .details {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
 
-                .certificate .summary p {
-                    margin: 8px 0;
-                    font-weight: bold;
-                }
+            .certificate .summary {
+                text-align: left;
+                margin-top: 30px;
+                padding: 15px;
+                background-color: #e0f7fa;
+                border-radius: 8px;
+                border-left: 5px solid #4caf50;
+            }
 
-                .certificate .signature {
-                    margin-top: 40px;
-                    font-size: 14px;
-                    text-align: left;
-                }
+            .certificate .summary p {
+                margin: 8px 0;
+            
+            }
 
-                .certificate .signature div {
-                    margin-bottom: 5px;
-                    font-weight: bold;
-                }
+            .certificate .signature {
+                margin-top: 40px;
+                font-size: 14px;
+                text-align: left;
+            }
 
-                .certificate .decorative-line {
-                    width: 120px;
-                    height: 6px;
-                    background-color: #2c3e50;
-                    margin: 20px auto;
-                    border-radius: 3px;
-                }
+            .certificate .signature div {
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
 
-                .certificate strong {
-                    font-weight: bold;
-                }
+            .certificate .decorative-line {
+                width: 120px;
+                height: 6px;
+                background-color: #4caf50;
+                margin: 20px auto;
+                border-radius: 3px;
+            }
 
-                .certificate .greenery {
-                    position: absolute;
-                    bottom: 10px;
-                    right: 10px;
-                    max-width: 100px;
-                    opacity: 0.7;
-                }
-            </style>
+            .certificate strong {
+                font-weight: bold;
+            }
+
+            .certificate .greenery {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                max-width: 100px;
+                opacity: 0.8;
+            }
+    </style>
         </head>
         <body>
             <div class="certificate">
                 <img src="https://pbs.twimg.com/profile_images/1675738898792579073/HZyBrP93_400x400.png" alt="Company Logo">
-                <h1>Certificate of Carbon Emission Reduction</h1>
+                <h1>Yayy!! You are a green club member now</h1>
                 <div class="decorative-line"></div>
                 <div class="details">
-                    <p><strong>Presented to:</strong> '.ucfirst($name). '</p>
                     <p><strong>Date:</strong>'. $date.'</p>
                 </div>
-                <p><strong>Certificate Number:</strong>'. rand(10,100) .'</p>
                 <p>Dear <strong>'.ucfirst($name). '</strong>,</p>
-                <p>Thank you for your recent purchase from our shop Nagarro Electronics. We are committed to promoting sustainability and reducing our carbon footprint. By choosing our products, you are contributing to a more sustainable future.</p>
+                <p>Hurrah! You’ve taken a fantastic step towards a greener future with your recent purchase from Nagarro Electronics! By choosing our eco-friendly products, you’re not just buying a product—you’re supporting a movement, one that’s vibrant, joyful, and green!.</p>
+                <p><strong> And, please dont’t forget to share this badge with your friends and family to promote consicious shopping.</strong> </p>
                 <div class="summary">
                     <p>Carbon Emission Reduction Summary:</p>
-                    <p>Product Purchased: [Product Name/Description]</p>
-                    <p>Carbon Emission Reduction: [X]% reduction compared to conventional products</p>
-                    <p>Total Carbon Emissions Saved: [Y] kg of CO₂</p>
+                    <p>Total Carbon Emissions Saved:' . $score.' kg of CO₂</p>
                 </div>
-                <p>Our Commitment:</p>
-                <p>At our shop, we prioritize sustainability in every aspect of our business. We continually strive to minimize our environmental impact through eco-friendly practices and innovative solutions.</p>
-                <p>Thank you for supporting our mission to create a healthier planet.</p>
+               <p>Our Promise:</p>
+                <p>At Nagarro Electronics, we believe in a brighter, more sustainable tomorrow. Your choice to support our eco-friendly initiatives helps us spread joy and make a real impact. Together, we’re making the world a happier, greener place!</p>
+                <p>Thanks for being a part of this amazing journey!</p>
                 <div class="signature">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Nagarro_Horizontal_Light_400x100px_300dpi.png" alt="Nagarro Logo">
                     <div>Nagarro Electronics</div>

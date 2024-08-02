@@ -167,7 +167,7 @@
             <event name="export" onEnter="true" manual="true" command="Oms/SendOrderShipped"/>
             <event name="ship" manual="true" command="Oms/SendOrderShipped"/>
             <event name="stock-update" manual="true"/>
-            <event name="close" manual="true" timeout="1 hour"/>
+            <event name="close" manual="true" timeout="1 hour" command="Oms/AddCustomerGreenEnergyCredit"/>
         </events>
     </process>
 
