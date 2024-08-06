@@ -4,6 +4,13 @@ Created by team ***Hacktastic Cartel***.
 ## Short Project Description
 The "Green Choices" project aims to reduce carbon footprints by promoting eco-friendly products and educating consumers on sustainable living.
 
+## 📹 Team Demo
+Team Nagarro Oryx presented this demo at the conclusion of the Nagarro Hackathon on Augsut 2nd, 2024:
+
+[![Nagarro Hackathon: Demo Team #1: Nagarro Oryx](https://img.youtube.com/vi/rpkTO-2L4IM/0.jpg)](https://www.youtube.com/watch?v=rpkTO-2L4IM)
+
+[View other team demo's on our YouTube Playlist](https://www.youtube.com/playlist?list=PLJooqCSo73SiCupw9Xtj8-6vUERAxpdk_)
+
 ## Installation
 
 1. Create a project folder and clone the B2C Demo Shop and the Docker SDK:
